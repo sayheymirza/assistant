@@ -34,8 +34,15 @@ app.use(express.text({ type: ["application/sdp", "text/plain"] }));
 app.post("/api/v1/session", async (req, res) => {
   const sessionConfig = JSON.stringify({
     type: "realtime",
-    model: "gpt-realtime",
-    audio: { output: { voice: "marin" } }
+    model: process.env['OPENAI_MODEL'] || "gpt-realtime-mini",
+    audio: {
+      input: {
+        'transcription': {
+          'model': process.env['OPENAI_USE_WHISPER'] === 'true' ? 'whisper-1' : undefined,
+        }
+      },
+      output: { voice: "marin" }
+    }
   });
 
   const fd = new FormData();

@@ -30,6 +30,10 @@ export class App {
         return;
       }
 
+      if(event.type == 'hello') {
+        this.status.set('connected');
+      }
+
       this.messages.set([...this.messages(), event]);
     });
   }
@@ -37,9 +41,7 @@ export class App {
   public onSubmit(status: 'connect' | 'disconnect') {
     if (status === 'connect' && this.status() !== 'connected') {
       this.status.set('connecting');
-      this.call.create().then(() => {
-        this.status.set('connected');
-      }).catch(() => {
+      this.call.create().catch(() => {
         this.status.set('error');
       });
     }
