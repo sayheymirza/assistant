@@ -6,7 +6,13 @@ import { Component, input } from '@angular/core';
   template: `
     @for (item of items(); track $index) {
       @if(item.type == 'message') {
-        <p class="p-2 rounded-xl bg-gray-100 text-sm">{{item.data}}</p>
+        <div 
+          class="chat"
+          [class.chat-start]="item.data.role == 'user'"
+          [class.chat-end]="item.data.role == 'assistant'"
+        >
+          <div class="chat-bubble">{{item.data.text}}</div>
+        </div>
       }
       @if(item.type == 'show-menu') {
         <div class="flex flex-nowrap items-center gap-2 overflow-y-scroll -mx-4 px-4">

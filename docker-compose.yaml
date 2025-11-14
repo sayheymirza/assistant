@@ -1,4 +1,12 @@
 services:
+  piper:
+    build:
+      context: .
+      dockerfile: Dockerfile.piper
+    environment:
+      - VOICE_MODEL=fa_IR-amir-medium
+    ports:
+      - "5200:5000"
   web:
     build: .
     ports:

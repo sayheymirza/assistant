@@ -1,0 +1,36 @@
+# Dockerfile for Piper TTS HTTP API
+FROM python:3.11-slim
+
+# Set environment variables
+ENV VOICE_MODEL=fa_IR-amir-medium
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Piper TTS with HTTP support
+RUN python3 -m pip install --no-cache-dir piper-tts[http]
+
+# Create directories for voices and data
+RUN mkdir -p /app/voices /app/data
+
+# Download a default voice (configurable via VOICE_MODEL env var)
+RUN python3 -m piper.download_voices ${VOICE_MODEL} || echo "Voice model ${VOICE_MODEL} not available"
+
+# Download Persian/Farsi voice if available (optional)
+# RUN python3 -m piper.download_voices fa-haaniye-medium || echo "Persian voice not available"
+
+# Expose the default port
+EXPOSE 5000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:5000/voices || exit 1
+
+# Default command to run the HTTP server
+CMD ["sh", "-c", "python3 -m piper.http_server -m ${VOICE_MODEL} --host 0.0.0.0 --port 5000"]
