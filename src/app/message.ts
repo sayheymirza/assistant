@@ -8,7 +8,7 @@ import { Component, input } from '@angular/core';
       @if(item()!.type === 'message') {
         <div 
           class="bg-gradient-to-br from-black/8 to-black/12 p-2.5 rounded-xl max-w-xs w-full min-w-56 animate-fade-in">
-          <p class=" whitespace-break-spaces">{{item()!.content}}</p>
+          <p class=" whitespace-break-spaces text-sm">{{item()!.content}}</p>
         </div>
       }
     }

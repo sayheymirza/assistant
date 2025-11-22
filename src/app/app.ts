@@ -26,7 +26,7 @@ import { Footer } from "./footer";
     </footer>
   `,
   host: {
-    class: 'w-full h-full min-h-full flex flex-col items-center gap-4 p-10'
+    class: 'w-full h-full min-h-full flex flex-col items-center gap-4 pt-20'
   }
 })
 export class App {
