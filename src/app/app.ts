@@ -27,7 +27,7 @@ import { Message } from "./message";
     </div>
   `,
   host: {
-    class: 'relative w-vw h-vh flex flex-col items-center gap-4 p-10'
+    class: 'relative w-screen h-screen flex flex-col items-center gap-4 p-10'
   }
 })
 export class App {
