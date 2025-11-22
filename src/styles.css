@@ -20,23 +20,6 @@
 
 body {
     font-family: 'YekanBakhFaNum', sans-serif;
-    padding-top: env(safe-area-inset-top, 0);
-    padding-bottom: env(safe-area-inset-bottom, 0);
-}
-
-@supports (padding: max(0px)) {
-    body {
-        /* Ensure safe breathing room on Safari notch devices */
-        padding-top: max(1rem, env(safe-area-inset-top));
-        padding-bottom: max(1rem, env(safe-area-inset-bottom));
-    }
-}
-
-@supports (-webkit-touch-callout: none) {
-    body {
-        padding-top: max(1rem, constant(safe-area-inset-top));
-        padding-bottom: max(1rem, constant(safe-area-inset-bottom));
-    }
 }
 
 .animate-fade-in {

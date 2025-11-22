@@ -27,7 +27,7 @@ import { Message } from "./message";
     </div>
   `,
   host: {
-    class: 'relative bg-[url("/background.jpg")] bg-cover bg-center w-vw h-dvh flex flex-col items-center gap-4 p-10'
+    class: 'relative w-vw h-dvh flex flex-col items-center gap-4 p-10'
   }
 })
 export class App {
