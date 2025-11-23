@@ -4,11 +4,14 @@ import { Wavesurfer } from "./wavesurfer";
 import { Assistant } from './assistant';
 import { Message } from "./message";
 import { Footer } from "./footer";
+import { Background } from "./background";
 
 @Component({
   selector: 'app-root',
-  imports: [Face, Wavesurfer, Message, Footer],
+  imports: [Face, Wavesurfer, Message, Footer, Background],
   template: `
+    <app-background />
+
     <strong class="text-4xl">{{time()}}</strong>
 
     <app-face class="block my-10" [style]="faceStyle()"/>
