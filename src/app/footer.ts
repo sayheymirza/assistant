@@ -17,9 +17,9 @@ import { FormsModule } from '@angular/forms';
       <strong class="opacity-70 text-sm">سبدخرید</strong>
     </div>
 
-    <div class="bg-black/10 h-14 grow rounded-full overflow-hidden">
+    <div class="bg-gradient-to-tr from-white/30 to-white/10 backdrop-blur shadow-xs h-14 grow rounded-full overflow-hidden">
       <textarea
-        class="min-h-14 max-h-14 h-14 w-full bg-transparent outline-0 border-0 p-4 placeholder:text-center"
+        class="min-h-14 max-h-14 h-14 w-full bg-transparent outline-0 border-0 p-4 placeholder:text-center placeholder:font-bold"
         placeholder="می توانید بنویسید"
         [(ngModel)]="text"
         (ngModelChange)="onTextChange()"

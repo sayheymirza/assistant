@@ -56,10 +56,7 @@ export class Call {
     }, 5000);
 
     setTimeout(() => {
-
-      this.assistant.start().then(() => {
-        console.log('Recording started');
-      });
+      this.assistant.start();
     }, 100);
   }
 
